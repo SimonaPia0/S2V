@@ -1,0 +1,25 @@
+--- Training Summary ---
+Train Path: datasets/data/A/train.json.gz
+Test Path: datasets/data/A/test.json.gz
+Noise Ratio: 0.0
+Label Smoothing Epsilon: 0.0
+Loss Type: gce
+GCE q: 0.7
+Epochs: 100 / 100 (max)
+Batch Size: 32
+Hidden Dim: 128
+Num Layers: 3
+Learning Rate: 0.001
+Num Node Features: 10
+Edge Features Dim: 7
+Num Classes: 6
+Validation Split Ratio: 0.1
+Best Model Checkpoint: C:\Users\veron\OneDrive\Desktop\deep_learning_project\hackaton\checkpoints\A\model_Aepochepoch=99-v1.ckpt
+Last Train Loss: 0.3912
+Last Train Accuracy: 0.7242
+Last Train F1: 0.6719
+Last Val Loss: 0.4287
+Last Val Accuracy: 0.6995
+Last Val F1: 0.6478
+
+--- Test Metrics Not Applicable ---

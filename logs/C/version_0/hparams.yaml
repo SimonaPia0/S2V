@@ -1,0 +1,10 @@
+dropout_rate: 0.5
+edge_channels: 7
+gce_q: 0.7
+hidden_dim: 128
+label_smoothing: 0.0
+learning_rate: 0.001
+loss_type: gce
+num_classes: 6
+num_layers: 3
+num_node_features: 10

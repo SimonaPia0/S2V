@@ -1,0 +1,25 @@
+--- Training Summary ---
+Train Path: datasets/D/train.json.gz
+Test Path: datasets/D/test.json.gz
+Noise Ratio: 0.0
+Label Smoothing Epsilon: 0.0
+Loss Type: gce
+GCE q: 0.7
+Epochs: 100 / 100 (max)
+Batch Size: 32
+Hidden Dim: 128
+Num Layers: 3
+Learning Rate: 0.001
+Num Node Features: 10
+Edge Features Dim: 7
+Num Classes: 6
+Validation Split Ratio: 0.1
+Best Model Checkpoint: C:\Users\pinto\Desktop\UNI\DEEP LEARNING\HACKATON\hackaton\checkpoints\D\model_D_epoch_epoch=80.ckpt
+Last Train Loss: 0.2515
+Last Train Accuracy: 0.8114
+Last Train F1: 0.8522
+Last Val Loss: 0.3230
+Last Val Accuracy: 0.7432
+Last Val F1: 0.8087
+
+--- Test Metrics Not Applicable ---
