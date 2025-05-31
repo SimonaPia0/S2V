@@ -268,49 +268,14 @@ def main():
     # --- Save Training Summary ---
     summary_path = Path(logger.log_dir) / "training_summary.txt"
     with open(summary_path, 'w') as f:
-        f.write("--- Training Summary ---\n")
-        f.write(f"Train Path: {args.train_path}\n")
-        f.write(f"Test Path: {args.test_path}\n")
-        f.write(f"Noise Ratio: {args.noise_ratio}\n")
-        f.write(f"Label Smoothing Epsilon: {args.label_smoothing}\n")
-        f.write(f"Loss Type: {args.loss_type}\n")
-        f.write(f"GCE q: {args.gce_q}\n")
-        f.write(f"Epochs: {trainer.current_epoch} / {args.epochs} (max)\n")
-        f.write(f"Batch Size: {args.batch_size}\n")
-        f.write(f"Hidden Dim: {args.hidden_dim}\n")
-        f.write(f"Num Layers: {args.num_layers}\n")
-        f.write(f"Learning Rate: {args.learning_rate}\n")
-        f.write(f"Num Node Features: {num_node_features}\n")
-        f.write(f"Edge Features Dim: {edge_channels}\n")
-        f.write(f"Num Classes: {args.num_classes}\n")
-        f.write(f"Validation Split Ratio: {args.val_split_ratio}\n")
-        f.write(f"Best Model Checkpoint: {checkpoint_callback.best_model_path}\n")
+        f.write(f"Training epochs: {args.epochs}\n")
+        f.write(f"Training batch size: {args.batch_size}\n")
+        f.write(f"Training samples: {len(train_subset)}\n")
+        f.write(f"Validation samples: {len(val_subset)}\n")
+        f.write(f"Noise ratio applied: {args.noise_ratio}\n")
+        f.write(f"Label smoothing epsilon: {args.label_smoothing}\n")
+        f.write(f"Loss type: {args.loss_type}\n")
+        f.write(f"Best model path: {checkpoint_callback.best_model_path}\n")
 
-# Controlla la presenza di una metrica di validazione per assicurarti che il training sia andato a buon fine
-        if 'val_loss' in trainer.callback_metrics: # CHECK: val_loss
-            f.write(f"Last Train Loss: {trainer.callback_metrics.get('train_loss', 'N/A'):.4f}\n") # CHECK: train_loss
-            f.write(f"Last Train Accuracy: {trainer.callback_metrics.get('train_acc_epoch', 'N/A'):.4f}\n")
-            f.write(f"Last Train F1: {trainer.callback_metrics.get('train_f1_epoch', 'N/A'):.4f}\n")
-            f.write(f"Last Val Loss: {trainer.callback_metrics['val_loss']:.4f}\n") # CHECK: val_loss
-            f.write(f"Last Val Accuracy: {trainer.callback_metrics['val_acc_epoch']:.4f}\n")
-            f.write(f"Last Val F1: {trainer.callback_metrics['val_f1_epoch']:.4f}\n")
-        elif 'train_loss' in trainer.callback_metrics: # CHECK: train_loss (se solo train_loss è presente)
-             f.write(f"Last Train Loss: {trainer.callback_metrics['train_loss']:.4f}\n") # CHECK: train_loss
-             f.write(f"Last Train Accuracy: {trainer.callback_metrics['train_acc_epoch']:.4f}\n")
-             f.write(f"Last Train F1: {trainer.callback_metrics['train_f1_epoch']:.4f}\n")
-             f.write("Validation metrics not available (e.g., validation never ran or dataset was empty).\n")
-        else:
-            f.write("Training and/or Validation metrics not fully available (e.g., training stopped prematurely).\n")
-
-        if model._test_metrics_updated:
-            f.write("\n--- Final Test Metrics ---\n")
-            if 'final_test_acc' in trainer.callback_metrics:
-                f.write(f"Final Test Accuracy: {trainer.callback_metrics['final_test_acc']:.4f}\n")
-            if 'final_test_f1' in trainer.callback_metrics:
-                f.write(f"Final Test F1 Score: {trainer.callback_metrics['final_test_f1']:.4f}\n")
-        else:
-            f.write("\n--- Test Metrics Not Applicable ---\n")
-
-
-if _name_ == '_main_':
+if __name__ == '__main__':
     main()
